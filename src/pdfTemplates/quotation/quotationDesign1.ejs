@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quotation</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 25mm;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #333;
+      }
+
+      .header {
+        background-color: #1e3a8a;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        font-weight: bold;
+      }
+
+      .title {
+        text-align: center;
+        margin: 20px 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #1f2937;
+      }
+
+      .section {
+        padding: 0 20px;
+      }
+
+      .section p {
+        margin: 5px 0;
+        line-height: 1.5;
+      }
+
+      .info-table {
+        border: 1px solid #ccc;
+        margin: 20px;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .charges-table {
+        width: 90%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      .charges-table td,
+      .charges-table th {
+        border: 1px solid #ccc;
+        padding: 8px;
+      }
+
+      .charges-table th {
+        background-color: #f3f4f6;
+        text-align: left;
+      }
+
+      .remark {
+        padding: 0 20px;
+        margin-top: 20px;
+      }
+
+      .remark p {
+        font-size: 12px;
+      }
+
+      .signatures {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin-top: 40px;
+        font-size: 14px;
+      }
+
+      .signature-block {
+        text-align: center;
+      }
+
+      .signature-line {
+        margin-top: 50px;
+        font-weight: bold;
+      }
+
+      .contact {
+        background-color: #f3f4f6;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 30px;
+        font-size: 13px;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 11px;
+        color: #666;
+        margin-top: 10px;
+        padding: 0 20px;
+      }
+
+      .footer p {
+        margin: 3px 0;
+      }
+
+      .highlight-blue {
+        color: #1d4ed8;
+        font-weight: 600;
+      }
+
+      .highlight-bold {
+        font-weight: bold;
+      }
+
+      .underline {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>Quotation No.: <%= quotationNo %></div>
+      <div>LR Date: <%= lrDate %></div>
+    </div>
+
+    <div class="title">QUOTATION</div>
+
+    <div class="section">
+      <p>TO, <strong><%= customerName %></strong></p>
+      <p>
+        We thank you for giving us an opportunity to quote for relocation and
+        shifting of your valuable goods from
+        <strong><%= fromLocation %></strong> to
+        <strong><%= toLocation %></strong>. We are pleased to quote our best
+        offer for the same as under:
+      </p>
+    </div>
+
+    <div class="info-table">
+      <div><strong>Name:</strong> <%= companyName %></div>
+      <div><strong>Company Name:</strong> Packers and Movers Bilty</div>
+      <div><strong>Mobile No.:</strong> <%= mobile %></div>
+      <div><strong>Email:</strong> <%= email %></div>
+      <div><strong>Vehicle Type:</strong> <%= vehicleType %></div>
+      <div><strong>Shifting Date:</strong> <%= shiftingDate %></div>
+    </div>
+
+    <div class="section">
+      <p class="highlight-bold">Particulars (Packaging and Shifting)</p>
+      <table class="charges-table">
+        <tr>
+          <td>Movement Charges</td>
+          <td>Rs. <%= charges.movement %></td>
+        </tr>
+        <tr>
+          <td>Labour Charges</td>
+          <td><%= charges.labour %></td>
+        </tr>
+        <tr>
+          <td>Local Transportation Charges</td>
+          <td><%= charges.transportation %></td>
+        </tr>
+        <tr>
+          <td>Loading Unloading Charges</td>
+          <td><%= charges.loading %></td>
+        </tr>
+        <tr>
+          <td>Addon Charges</td>
+          <td>Rs. <%= charges.addon %></td>
+        </tr>
+        <tr>
+          <td class="highlight-blue">NB Cargo Protection Charges</td>
+          <td>Rs. <%= charges.cargoProtection %></td>
+        </tr>
+        <tr class="highlight-bold">
+          <td class="highlight-blue">Gross Freight</td>
+          <td>Rs. <%= charges.total %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="remark">
+      <p class="underline highlight-bold">Remark</p>
+      <p><%= remark %></p>
+    </div>
+
+    <div class="signatures">
+      <div class="signature-block">
+        <p>Packers and Movers Bilty</p>
+        <p class="signature-line"><%= signatory %></p>
+        <p class="text-xs">Authorized Signatory</p>
+      </div>
+      <div class="signature-block">
+        <p>Customer Signature</p>
+        <p class="signature-line"><%= signatory %></p>
+      </div>
+    </div>
+
+    <div class="contact">
+      <p><strong>Have Any Questions? Please Contact Us On</strong></p>
+      <p>📞 <%= contactPhone %> | ✉️ <%= contactEmail %></p>
+    </div>
+
+    <div class="footer">
+      <p><strong>Packers Movers Bilty</strong></p>
+      <p>
+        Address: Plot No - 2/2, G/F Shyam Enclave Gopal Nagar, Z Block,
+        Najafgarh South West Delhi - 110043
+      </p>
+      <p>GST - 07DVIPP6452F2B | PAN - DVIPP6452F</p>
+      <p>
+        <em>This is a computer-generated document; signature not required</em>
+      </p>
+      <p class="text-gray-400">Item list is attached on page no. 2</p>
+    </div>
+  </body>
+</html>

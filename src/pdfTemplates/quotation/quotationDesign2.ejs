@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bill Book Movers Quotation</title>
+    <link href="styles.css" rel="stylesheet" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Arial:wght@400;600;700&display=swap");
+
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        line-height: 1.3;
+        margin: 0;
+        padding: 0;
+      }
+
+      .truck-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #ff6b35, #ff8c42);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .orange-line {
+        height: 4px;
+        background: linear-gradient(90deg, #ff6b35, #ff8c42);
+        width: 100%;
+      }
+
+      .quotation-btn {
+        background: #000;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 11px;
+        display: inline-block;
+      }
+
+      .main-border {
+        border: 2px solid #000;
+        max-width: 210mm;
+        margin: 0 auto;
+        background: white;
+      }
+
+      .section-border {
+        border-bottom: 1px solid #000;
+      }
+
+      .table-main {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #000;
+      }
+
+      .table-main th,
+      .table-main td {
+        border: 1px solid #000;
+        padding: 4px 6px;
+        font-size: 10px;
+        text-align: left;
+      }
+
+      .table-main th {
+        background: #f0f0f0;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .particulars-header {
+        background: #000;
+        color: white;
+        text-align: center;
+        padding: 6px;
+        font-weight: bold;
+        font-size: 11px;
+        margin: 0;
+      }
+
+      .amount-words {
+        background: #000;
+        color: white;
+        text-align: center;
+        padding: 4px;
+        font-weight: bold;
+        font-size: 10px;
+        margin: 0;
+      }
+
+      .services-box {
+        border: 1px solid #000;
+        padding: 8px;
+        font-size: 9px;
+        height: fit-content;
+      }
+
+      .signature-area {
+        min-height: 50px;
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 4px;
+        background: #fafafa;
+      }
+
+      .truck-illustration {
+        width: 100px;
+        height: 40px;
+        background: linear-gradient(135deg, #4a90e2, #357abd);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 14px;
+      }
+
+      .text-right {
+        text-align: right;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .font-bold {
+        font-weight: bold;
+      }
+
+      @media print {
+        body {
+          margin: 0;
+          font-size: 10px;
+        }
+        .main-border {
+          max-width: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-border">
+      <!-- Header Section -->
+      <div class="section-border">
+        <!-- Top Header with Logo and Contact -->
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 12px;
+          "
+        >
+          <!-- Left: Logo and Company Name -->
+          <div style="display: flex; align-items: center; gap: 12px">
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <img
+                src="http://localhost:5050/<%= companyDetails.logo %>"
+                alt="Company Logo"
+                style="max-width: 100%; max-height: 100%; object-fit: contain"
+              />
+            </div>
+            <div>
+              <div
+                style="
+                  font-size: 24px;
+                  font-weight: bold;
+                  color: #1e3a8a;
+                  line-height: 1;
+                "
+              >
+                <%= companyDetails && companyDetails.name%>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Contact Information -->
+          <div style="text-align: right; font-size: 10px; line-height: 1.4">
+            <div style="font-weight: bold">
+              Mob: <%=companyDetails.contactNumber1 %>,
+              <%=companyDetails.contactNumber2 %>
+            </div>
+            <div><strong>Address:</strong> <%=companyDetails.address %></div>
+            <!-- <div>Gopal Nagar, Z Block, Najafgarh</div>
+            <div>South West Delhi - 110043</div> -->
+            <div><strong>Email:</strong> <%=companyDetails.email %></div>
+            <div><strong>Website:</strong> www.billbook.website</div>
+          </div>
+        </div>
+
+        <!-- Orange Line -->
+        <div class="orange-line"></div>
+
+        <!-- GST/PAN and Quotation Button -->
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            border-top: 1px solid #000;
+          "
+        >
+          <div style="font-size: 10px">
+            <div><strong>GST No: <%=companyDetails.gstNo %></strong></div>
+            <div><strong>PAN No: AECPH5832M</strong></div>
+          </div>
+          <div class="quotation-btn">Quotation</div>
+        </div>
+
+        <!-- Customer and Quotation Details -->
+        <div style="border-top: 1px solid #000; padding: 10">
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              border-bottom: 1px solid #e5e7eb;
+            "
+          >
+            <!-- Left: Customer Details -->
+            <div
+              style="
+                flex: 1 1 0;
+                font-size: 10px;
+                line-height: 1.4;
+                border-right: 1px solid #000;
+                padding: 12px 16px 12px 12px;
+                background: #fafbfc;
+              "
+            >
+              <div style="font-weight: bold; margin-bottom: 2px">
+                Customer Details
+              </div>
+              <div><strong>Name:</strong> Bill Book Bilty</div>
+              <div>
+                <strong>Address:</strong> Plot No - 2/2, GIF Shyam Enclave Gopal
+                Nagar,
+              </div>
+              <div>Z Block, Najafgarh South West Delhi - 110043</div>
+              <div><strong>Mobile:</strong> +91 9540695403</div>
+            </div>
+            <!-- Right: Quotation Details -->
+            <div
+              style="
+                flex: 1 1 0;
+                font-size: 10px;
+                line-height: 1.4;
+                padding: 12px 12px 12px 16px;
+                background: #fafbfc;
+              "
+            >
+              <div style="font-weight: bold; margin-bottom: 2px">
+                Quotation Details
+              </div>
+              <div style="display: flex; flex-direction: row; gap: 24px">
+                <div>
+                  <div><strong>Quotation No:</strong> 89527</div>
+                  <div><strong>From:</strong> Delhi</div>
+                  <div><strong>Vehicle Type:</strong> Shared/Separate</div>
+                </div>
+                <div>
+                  <div><strong>Quotation Date:</strong> 04-02-2023</div>
+                  <div><strong>To:</strong> Jaipur</div>
+                  <div><strong>Shifting Date:</strong> 24-02-2024</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div style="padding: 12px">
+        <div style="font-size: 11px; margin-bottom: 8px">
+          <strong>Dear Sir / Madam</strong>
+        </div>
+        <div style="font-size: 10px; line-height: 1.4; margin-bottom: 12px">
+          We thank you for giving us an opportunity to quote for relocation and
+          shifting of your valuable goods from <strong>Delhi</strong>, to
+          <strong>Jharkhand, India</strong>. We are pleased to quote you our
+          best offer for the same as under:
+        </div>
+
+        <!-- Particulars Header -->
+        <div class="particulars-header">
+          Particulars (Packaging and Shifting)
+        </div>
+
+        <!-- Main Content Grid -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 12px;
+            margin-top: 8px;
+            align-items: start;
+          "
+        >
+          <!-- Left: Pricing Table -->
+          <div style="display: flex; flex-direction: column">
+            <div class="particulars-header" style="border-radius: 4px 4px 0 0">
+              Particulars (Packaging and Shifting)
+            </div>
+            <table class="table-main" style="border-top: none">
+              <thead>
+                <tr>
+                  <th style="width: 8%">SR.</th>
+                  <th style="width: 60%">Particulars</th>
+                  <th style="width: 32%">Amount (Rs)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">1.</td>
+                  <td>Freight</td>
+                  <td class="text-right">16500.00</td>
+                </tr>
+                <tr>
+                  <td class="text-center">2.</td>
+                  <td>Packing Charge</td>
+                  <td class="text-right">1500.00</td>
+                </tr>
+                <tr>
+                  <td class="text-center">3.</td>
+                  <td>Un Packing Charge</td>
+                  <td class="text-right">1500.00</td>
+                </tr>
+                <tr>
+                  <td class="text-center">4.</td>
+                  <td>Loading Charge</td>
+                  <td class="text-right">1500.00</td>
+                </tr>
+                <tr>
+                  <td class="text-center">5.</td>
+                  <td>UnLoading Charge</td>
+                  <td class="text-right">1500.00</td>
+                </tr>
+                <tr>
+                  <td class="text-center">6.</td>
+                  <td>Packing Material Charge</td>
+                  <td class="text-right">1500.00</td>
+                </tr>
+                <tr>
+                  <td class="text-center">7.</td>
+                  <td>Storage Charge</td>
+                  <td class="text-right">1500.00</td>
+                </tr>
+                <tr>
+                  <td class="text-center">8.</td>
+                  <td>Car/bike (TPT) Charge</td>
+                  <td class="text-right">1500.00</td>
+                </tr>
+                <tr>
+                  <td class="text-center">9.</td>
+                  <td>S.T. Charge</td>
+                  <td class="text-right">1500.00</td>
+                </tr>
+                <tr style="background: #f0f0f0">
+                  <td class="font-bold" colspan="2">Sub Total</td>
+                  <td class="text-right font-bold">35700.00</td>
+                </tr>
+                <tr>
+                  <td class="font-bold" colspan="2">SGST (18%)</td>
+                  <td class="text-right font-bold">2000.00</td>
+                </tr>
+                <tr>
+                  <td colspan="2">Insurance Charge</td>
+                  <td class="text-right">Extra</td>
+                </tr>
+                <tr>
+                  <td colspan="2">Surcharge @ 10%</td>
+                  <td class="text-right">Extra</td>
+                </tr>
+                <tr style="background: #f0f0f0">
+                  <td class="font-bold" colspan="2">Total Amount</td>
+                  <td class="text-right font-bold">38950.00</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Amount in Words -->
+            <div class="amount-words">
+              Amount in Words - Seventy six thousand eight hundred sixteen
+            </div>
+          </div>
+
+          <!-- Right: Services Information -->
+          <div style="display: flex; flex-direction: column">
+            <div class="particulars-header" style="border-radius: 4px 4px 0 0">
+              Using Quality Packing Materials
+            </div>
+            <div class="services-box" style="border-top: none">
+              <div
+                style="
+                  font-weight: bold;
+                  text-align: center;
+                  margin-bottom: 6px;
+                  font-size: 10px;
+                "
+              >
+                Using Quality Packing Materials
+              </div>
+              <ul
+                style="
+                  margin: 0;
+                  padding-left: 12px;
+                  font-size: 9px;
+                  line-height: 1.3;
+                "
+              >
+                <li>Air bubble sheet</li>
+                <li>Corrugated sheet</li>
+                <li>Lamination (water proof)</li>
+                <li>Thermocol sheet (glass items)</li>
+                <li>Cartoon box (18"Mx18"Hx18"L)</li>
+                <li>Tape</li>
+              </ul>
+
+              <div
+                style="font-weight: bold; margin: 8px 0 4px 0; font-size: 9px"
+              >
+                Note : as per special requirement
+              </div>
+              <ul
+                style="
+                  margin: 0;
+                  padding-left: 12px;
+                  font-size: 9px;
+                  line-height: 1.3;
+                "
+              >
+                <li>Thermocol box (crockery item)</li>
+                <li>Wooden crate</li>
+                <li>Stamp patti</li>
+                <li>Plastic crate</li>
+                <li>Plastic bag (matters)</li>
+              </ul>
+
+              <div
+                style="font-weight: bold; margin: 8px 0 4px 0; font-size: 9px"
+              >
+                Transportation By
+              </div>
+              <ul
+                style="
+                  margin: 0;
+                  padding-left: 12px;
+                  font-size: 9px;
+                  line-height: 1.3;
+                "
+              >
+                <li>Closed body container</li>
+                <li>Open body truck</li>
+                <li>By air</li>
+                <li>By train</li>
+              </ul>
+
+              <div
+                style="font-weight: bold; margin: 8px 0 4px 0; font-size: 9px"
+              >
+                Load Type
+              </div>
+              <ul
+                style="
+                  margin: 0;
+                  padding-left: 12px;
+                  font-size: 9px;
+                  line-height: 1.3;
+                "
+              >
+                <li>Part load</li>
+                <li>Full load</li>
+              </ul>
+
+              <div
+                style="font-weight: bold; margin: 8px 0 4px 0; font-size: 9px"
+              >
+                Car Transportation
+              </div>
+              <ul
+                style="
+                  margin: 0;
+                  padding-left: 12px;
+                  font-size: 9px;
+                  line-height: 1.3;
+                "
+              >
+                <li>By road</li>
+                <li>Car carrier</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="section-border">
+        <!-- Insurance, Bank Details, UPI Details -->
+        <div
+          style="
+            border: 2px solid #000;
+            border-radius: 6px;
+            padding: 0;
+            margin: 12px;
+            background: #fff;
+          "
+        >
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr;
+              gap: 0;
+              font-size: 9px;
+              border-bottom: none;
+              border-right: none;
+              min-height: 100px;
+            "
+          >
+            <!-- Insurance & Remark -->
+            <div
+              style="
+                padding: 12px 10px;
+                border-right: 1px solid #000;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-height: 100px;
+              "
+            >
+              <div>
+                <div style="font-weight: bold; margin-bottom: 4px">
+                  Insurance at 3% on declared value of goods
+                </div>
+                <div style="font-weight: bold; margin-bottom: 6px">
+                  Surcharge @ 10% will be extra on subtotal billing amount
+                </div>
+                <div style="font-weight: bold; margin-bottom: 2px">Remark</div>
+                <div>Remark Old and used household goods not for sale.</div>
+              </div>
+            </div>
+
+            <!-- Bank Details -->
+            <div
+              style="
+                padding: 12px 10px;
+                border-right: 1px solid #000;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-height: 100px;
+              "
+            >
+              <div>
+                <div style="font-weight: bold; margin-bottom: 4px">
+                  Our Bank Detail
+                </div>
+                <div><strong>Beneficiary Name:</strong> Sanjay Poonia</div>
+                <div><strong>Bank Name:</strong> Stat Bank of India</div>
+                <div><strong>Bank A/C No:</strong> 35231295729</div>
+                <div><strong>Bank IFSC Code:</strong> SBIN0011409</div>
+              </div>
+            </div>
+
+            <!-- UPI Details -->
+            <div
+              style="
+                padding: 12px 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-height: 100px;
+              "
+            >
+              <div>
+                <div style="font-weight: bold; margin-bottom: 4px">
+                  UPI Detail
+                </div>
+                <div><strong>UPI 1:</strong> 9512305001@hdl</div>
+                <div><strong>UPI 2:</strong> 9512305001@paytm</div>
+                <div><strong>PhonePe/Google Pay:</strong> 9512305001</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Signature Section -->
+        <div style="padding: 12px">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr;
+              gap: 20px;
+              align-items: end;
+            "
+          >
+            <!-- Moving Illustration -->
+            <div style="text-align: center">
+              <div class="truck-illustration">🚛📦</div>
+            </div>
+
+            <!-- Company Signature -->
+            <div style="text-align: center">
+              <div class="signature-area">
+                <div
+                  style="
+                    color: #1e40af;
+                    font-weight: bold;
+                    font-size: 14px;
+                    font-family: cursive;
+                  "
+                >
+                  Sanjay
+                </div>
+              </div>
+              <div style="margin-top: 4px; font-size: 9px">
+                <div style="color: #1e40af; font-weight: bold">BillBook</div>
+                <div>Authorized Signatory</div>
+              </div>
+            </div>
+
+            <!-- Customer Signature -->
+            <div style="text-align: center">
+              <div class="signature-area">
+                <div
+                  style="
+                    color: #1e40af;
+                    font-weight: bold;
+                    font-size: 14px;
+                    font-family: cursive;
+                  "
+                >
+                  Sanjay
+                </div>
+              </div>
+              <div style="margin-top: 4px; font-size: 9px">
+                <div style="font-weight: bold">Customer Signature</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+          style="
+            border-top: 1px solid #000;
+            text-align: center;
+            padding: 6px;
+            font-size: 9px;
+            color: #666;
+          "
+        >
+          This is a computer-generated document signature not required
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
