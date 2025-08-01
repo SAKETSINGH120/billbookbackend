@@ -20,4 +20,8 @@ apt-get install -y wget \
     xdg-utils \
     --no-install-recommends
 
+# Step 1: Install dependencies
 npm install
+
+# Step 2: Install Chrome used by Puppeteer
+npx puppeteer browsers install chrome
