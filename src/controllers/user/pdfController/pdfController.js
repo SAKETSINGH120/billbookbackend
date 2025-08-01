@@ -1,21 +1,3 @@
-// const generatePdf = require("../../../utils/generatePdf");
-
-// exports.createPdf = async (req, res) => {
-//   const { service, design } = req.params;
-//   const data = req.body;
-//   console.log("hello coming");
-//   try {
-//     const pdfBuffer = await generatePdf(service, design, data);
-//     res.set({
-//       "Content-Type": "application/pdf",
-//       "Content-Disposition": `attachment; filename=${design}.pdf`,
-//     });
-//     res.send(pdfBuffer);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
 const generatePdf = require("../../../utils/generatePdf");
 const Quotation = require("../../../models/quotation"); // adjust path/model
 const Company = require("../../../models/company"); // adjust path/model
@@ -41,8 +23,6 @@ exports.createPdf = async (req, res) => {
     if (!quatatioData) {
       return res.status(404).json({ error: "Quotation not found" });
     }
-
-    console.log("quatatioData", quatatioData);
 
     // Merge both responses into one object
     const mergedData = {

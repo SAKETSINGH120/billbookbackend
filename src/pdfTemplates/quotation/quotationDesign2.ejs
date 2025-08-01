@@ -16,6 +16,22 @@
         padding: 0;
       }
 
+      .watermark {
+        position: fixed;
+        top: 40%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 100px;
+        font-weight: 700;
+        color: rgba(185, 182, 182, 0.3);
+        transform: rotate(-30deg);
+        z-index: 1;
+        pointer-events: none;
+        user-select: none;
+        white-space: nowrap;
+      }
+
       .truck-icon {
         width: 40px;
         height: 40px;
@@ -49,7 +65,9 @@
         border: 2px solid #000;
         max-width: 210mm;
         margin: 0 auto;
-        background: white;
+        /* background: white; */
+        position: relative;
+        z-index: 2;
       }
 
       .section-border {
@@ -147,6 +165,8 @@
     </style>
   </head>
   <body>
+    <!-- Watermark -->
+    <div class="watermark">Bill Book</div>
     <div class="main-border">
       <!-- Header Section -->
       <div class="section-border">

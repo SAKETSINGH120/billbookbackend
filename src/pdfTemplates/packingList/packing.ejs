@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Packaging List / Items List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .watermark {
+        position: fixed;
+        top: 70%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 100px;
+        font-weight: 700;
+        color: rgb(233, 229, 229);
+        transform: rotate(-30deg);
+        z-index: 0;
+        pointer-events: none;
+        user-select: none;
+        white-space: nowrap;
+        opacity: 90;
+      }
+
+      .content {
+        position: relative;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body class="text-sm text-black p-4 font-sans bg-white">
+    <!-- Watermark -->
+    <div class="watermark">Bill Book</div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <!-- Header -->
+      <div class="text-center border-b border-black pb-1">
+        <p class="text-red-600 font-bold">GSTIN : 07CTWPA1548J1ZC</p>
+        <h1 class="text-2xl font-bold text-red-700">Bill Book</h1>
+        <p class="font-semibold -mt-1">AND TRANSPORT COMPANY</p>
+        <p class="text-xs italic">AN ISO CERTIFIED 9001:2015 COMPANY</p>
+        <p class="text-green-700 font-semibold text-sm">
+          Door to Door service All Over <span class="underline">India</span>
+        </p>
+        <p class="text-xs">
+          130/1-G, 2nd Floor, Mam Raj Mohalla, Garhi, East of Kailash, New
+          Delhi-110065
+        </p>
+        <p class="text-xs">
+          H.O.: Shop No.1, 1st Floor Gaurav Complex, Adarsh Market, Opp. Fire
+          Brigade Station, Sec-5, Noida - 201301 (U.P.)
+        </p>
+        <p class="text-xs mt-1">
+          Mob.: 9818627818, 9717706278, 9354222717, 011-41401768
+        </p>
+        <p class="text-xs">
+          E-mail :
+          <span class="text-red-600">contactbillbook.com</span> | Website:
+          <span class="text-blue-600">www.billbookcom</span>
+        </p>
+      </div>
+
+      <!-- Red Line -->
+      <div class="bg-red-600 text-white text-center font-bold py-1 mt-1">
+        TO WHOM SO EVER IT MAY CONCERN
+      </div>
+
+      <!-- Sub Heading -->
+      <div class="text-center font-semibold text-blue-600 mt-1 text-sm">
+        SUB : TRANSPORTATION OF HOUSEHOLD GOODS & FURNITURE
+      </div>
+
+      <!-- Statement -->
+      <div class="text-xs mt-2 leading-5">
+        <p>
+          The undersigned at present address given below has been transferred to
+          ____________________ and the below mention Household goods & Furniture
+          over to M/s.
+          <strong>Bill Book & Transport Company</strong> to Transport In Goods
+          to the destination vide their consignment Note No. ________
+          Date__________ The goods as specified and personal belongings, not
+          meant for any kind of sale are exempted from all taxes and octroi vide
+          Authority Act. No. 2, Section 1580 of the Indian tolls 1901
+        </p>
+      </div>
+
+      <!-- GR No and Date -->
+      <div class="flex justify-between mt-4 text-sm">
+        <div class="w-1/2 pr-2">
+          <div class="border border-black p-2 h-full">
+            <p><strong>GR No.</strong> ______________________</p>
+            <p class="mt-2"><strong>ORIGIN ADDRESS</strong></p>
+            <div class="h-20 border border-black mt-1"></div>
+          </div>
+        </div>
+        <div class="w-1/2 pl-2">
+          <div class="border border-black p-2 h-full">
+            <p><strong>Date</strong> ______________________</p>
+            <p class="mt-2"><strong>DESTINATION</strong></p>
+            <div class="h-20 border border-black mt-1"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="grid grid-cols-2 mt-4 gap-4">
+        <table class="table-auto w-full border border-blue-500 text-center">
+          <thead class="bg-blue-100">
+            <tr>
+              <th class="border border-blue-500 px-1">S. No.</th>
+              <th class="border border-blue-500 px-1">Method of Packing</th>
+              <th class="border border-blue-500 px-1">PARTICULARS</th>
+              <th class="border border-blue-500 px-1">Value (apr)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 1; i <= 20; i++) { %>
+            <tr>
+              <td class="border border-blue-500 px-1 py-1"><%= i %></td>
+              <td class="border border-blue-500 px-1 py-1"></td>
+              <td class="border border-blue-500 px-1 py-1"></td>
+              <td class="border border-blue-500 px-1 py-1"></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <table class="table-auto w-full border border-blue-500 text-center">
+          <thead class="bg-blue-100">
+            <tr>
+              <th class="border border-blue-500 px-1">S. No.</th>
+              <th class="border border-blue-500 px-1">Method of Packing</th>
+              <th class="border border-blue-500 px-1">PARTICULARS</th>
+              <th class="border border-blue-500 px-1">Value (apr)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 1; i <= 20; i++) { %>
+            <tr>
+              <td class="border border-blue-500 px-1 py-1"><%= i %></td>
+              <td class="border border-blue-500 px-1 py-1"></td>
+              <td class="border border-blue-500 px-1 py-1"></td>
+              <td class="border border-blue-500 px-1 py-1"></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Signature Section -->
+      <div class="flex justify-between mt-4 text-xs font-semibold text-red-600">
+        <div>supervisor Signature</div>
+        <div>Consignor Signature</div>
+        <div>Driver Signature</div>
+      </div>
+
+      <!-- Consignment Footer -->
+      <div class="border border-blue-500 mt-2 text-xs p-2">
+        <div class="font-semibold text-center mb-1">
+          Consignment Received by
+        </div>
+        <p>
+          Total Packages ......................................................
+          Signature ..........................................................
+          Ph. ..................................... Date
+          .........................
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

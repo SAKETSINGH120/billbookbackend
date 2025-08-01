@@ -1,21 +1,28 @@
 const mongoose = require("mongoose");
 
-const packingSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+const packingSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
 
     // Full form stored as raw JSON (from collapsible sections)
     formData: {
-        type: Object,
-        required: true,
-        default: {}
+      type: Object,
+      required: true,
+      default: {},
     },
     status: {
-        type: String,
-        enum: ["draft", "submitted", "approved", "rejected"],
-        default: "draft"
+      type: String,
+      enum: ["draft", "submitted", "approved", "rejected"],
+      default: "draft",
     },
-}, {
-    timestamps: true
-});
+  },
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model("Packing", packingSchema);
