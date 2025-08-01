@@ -69,6 +69,7 @@ const generatePdf = async (service, design, data) => {
   const browser = await puppeteer.launch({
     headless: "new", // 'new' mode for latest Puppeteer versions
     args: ["--no-sandbox", "--disable-setuid-sandbox"], // Helpful if deploying on hosting like Heroku
+    executablePath: puppeteer.executablePath(),
   });
 
   const page = await browser.newPage();
