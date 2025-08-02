@@ -5,4 +5,4 @@ npx puppeteer browsers install chrome
 
 # Then run your normal build command
 npm install
-npm run build
+
