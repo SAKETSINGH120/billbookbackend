@@ -52,7 +52,7 @@
 const puppeteer = require("puppeteer");
 const ejs = require("ejs");
 const path = require("path");
-import { executablePath } from 'puppeteer'
+const { executablePath } = require('puppeteer')
 
 console.log("executablePath" , executablePath)
 
