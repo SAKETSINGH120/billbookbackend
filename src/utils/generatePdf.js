@@ -52,6 +52,9 @@
 const puppeteer = require("puppeteer");
 const ejs = require("ejs");
 const path = require("path");
+import { executablePath } from 'puppeteer'
+
+console.log("executablePath" , executablePath)
 
 const generatePdf = async (service, design, data) => {
   console.log("PDF generation started for", service, design);
@@ -70,7 +73,7 @@ const generatePdf = async (service, design, data) => {
     headless: "new", // 'new' mode for latest Puppeteer versions
     args: ["--no-sandbox", "--disable-setuid-sandbox"], // Helpful if deploying on hosting like Heroku
     // executablePath: "/opt/render/.cache/puppeteer/chrome/linux-138.0.7204.168/chrome-linux64/chrome",
-    executablePath: '/opt/render/.cache/puppeteer/chrome/linux-138.0.7204.168/chrome-linux64/chrome',
+    executablePath: executablePath(),
   });
 
   const page = await browser.newPage();
