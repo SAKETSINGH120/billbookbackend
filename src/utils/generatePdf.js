@@ -54,7 +54,7 @@ const ejs = require("ejs");
 const path = require("path");
 const { executablePath } = require('puppeteer')
 
-console.log("executablePath" , executablePath)
+console.log("executablePath" , executablePath())
 
 const generatePdf = async (service, design, data) => {
   console.log("PDF generation started for", service, design);
