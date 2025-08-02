@@ -1,7 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Step 1: Install node modules
-npm install
-
-# Step 2: Download the Chromium browser required by Puppeteer
+# Force install Chrome before build
 npx puppeteer browsers install chrome
+
+# Then run your normal build command
+npm install
+npm run build
